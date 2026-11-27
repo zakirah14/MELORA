@@ -1,0 +1,376 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout | MELORA</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        .checkout-page {
+            min-height: 100vh;
+            background: var(--ivory);
+            padding: 45px 7%;
+        }
+
+        .checkout-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 45px;
+        }
+
+        .checkout-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 30px;
+            color: var(--dark);
+            text-decoration: none;
+            letter-spacing: 3px;
+        }
+
+        .back-home {
+            color: var(--mocha);
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .checkout-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .checkout-heading span {
+            color: var(--rose);
+            letter-spacing: 3px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .checkout-heading h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 42px;
+            color: var(--dark);
+            margin: 12px 0;
+        }
+
+        .checkout-heading p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .checkout-layout {
+            max-width: 1050px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.3fr 0.9fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .checkout-card {
+            background: white;
+            padding: 32px;
+            border-radius: 12px;
+            border: 1px solid var(--cream);
+        }
+
+        .checkout-card h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark);
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+
+        .checkout-form-group {
+            margin-bottom: 20px;
+        }
+
+        .checkout-form-group label {
+            display: block;
+            color: var(--dark);
+            font-size: 13px;
+            margin-bottom: 9px;
+            font-weight: 600;
+        }
+
+        .checkout-form-group input,
+        .checkout-form-group textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid var(--cream);
+            border-radius: 7px;
+            background: var(--ivory);
+            font-family: inherit;
+            font-size: 13px;
+            color: var(--dark);
+            outline: none;
+        }
+
+        .checkout-form-group input:focus,
+        .checkout-form-group textarea:focus {
+            border-color: var(--rose);
+        }
+
+        .checkout-form-group textarea {
+            min-height: 95px;
+            resize: vertical;
+        }
+
+        .checkout-summary-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 17px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .checkout-summary-item strong {
+            color: var(--dark);
+        }
+
+        .checkout-divider {
+            border: none;
+            border-top: 1px solid var(--cream);
+            margin: 22px 0;
+        }
+
+        .checkout-grand-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .checkout-grand-total strong {
+            font-size: 21px;
+            color: var(--mocha);
+        }
+
+        .checkout-submit {
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            padding: 16px;
+            background: var(--mocha);
+            color: white;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .checkout-submit:hover {
+            background: var(--dark);
+        }
+
+        .checkout-empty {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        .checkout-item-name {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        .checkout-footer {
+            text-align: center;
+            margin-top: 55px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-page {
+                padding: 25px 5%;
+            }
+
+            .checkout-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .checkout-heading h1 {
+                font-size: 34px;
+            }
+
+            .checkout-card {
+                padding: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="checkout-page">
+
+        <header class="checkout-top">
+            <a href="index.html" class="checkout-logo">MELORA.</a>
+
+            <a href="index.html" class="back-home">
+                ← Back to Shopping
+            </a>
+        </header>
+
+        <section class="checkout-heading">
+            <span>ALMOST THERE</span>
+            <h1>Complete Your Order</h1>
+            <p>Just a few details before your MELORA treats arrive.</p>
+        </section>
+
+        <div class="checkout-layout">
+
+            <!-- CUSTOMER FORM -->
+            <section class="checkout-card">
+
+                <h2>Customer Details</h2>
+
+                <form id="checkoutForm" novalidate>
+
+                    <div class="checkout-form-group">
+                        <label for="customerName">Full Name</label>
+                        <input
+                            type="text"
+                            id="customerName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+                    </div>
+
+                    <div class="checkout-form-group">
+                        <label for="customerPhone">WhatsApp Number</label>
+                        <input
+                            type="tel"
+                            id="customerPhone"
+                            placeholder="08xxxxxxxxxx"
+                            required
+                        >
+                    </div>
+
+                    <div class="checkout-form-group">
+                        <label for="customerAddress">Delivery Address</label>
+                        <textarea
+                            id="customerAddress"
+                            placeholder="Enter your complete address"
+                            required
+                        ></textarea>
+                    </div>
+
+                    <div class="checkout-form-group">
+                        <label for="customerNote">
+                            Order Notes (Optional)
+                        </label>
+                        <textarea
+                            id="customerNote"
+                            placeholder="Any special requests?"
+                        ></textarea>
+                    </div>
+
+                    <button type="submit" class="checkout-submit">
+                        Place Order via WhatsApp
+                    </button>
+
+                </form>
+
+            </section>
+
+
+            <!-- ORDER SUMMARY -->
+            <aside class="checkout-card">
+
+                <h2>Your Order</h2>
+
+                <div id="checkoutItems">
+                    <p class="checkout-empty">
+                        Loading your order...
+                    </p>
+                </div>
+
+                <hr class="checkout-divider">
+
+                <div class="checkout-grand-total">
+                    <span>Total</span>
+                    <strong id="checkoutTotal">Rp0</strong>
+                </div>
+
+                <p class="checkout-empty">
+                    Thank you for choosing MELORA.
+                    Every little treat is made with love.
+                </p>
+
+            </aside>
+
+        </div>
+
+        <footer class="checkout-footer">
+            © 2026 MELORA. Made with love.
+        </footer>
+
+    </main>
+
+        </main>
+
+    <!-- MELORA ALERT MODAL -->
+    <div class="alert-modal-overlay" id="alertModal">
+
+        <div class="alert-modal">
+
+            <div class="alert-modal-icon">!</div>
+
+            <h3 id="alertTitle">Please check your details</h3>
+
+            <p id="alertMessage">
+                Please complete the required information.
+            </p>
+
+            <button
+                type="button"
+                onclick="closeAlertModal()"
+            >
+                Okay, Got It
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- ORDER SENT CONFIRMATION MODAL -->
+<div class="alert-modal-overlay" id="orderSentModal">
+
+    <div class="alert-modal">
+
+        <div class="alert-modal-icon">♡</div>
+
+        <h3>Have You Sent Your Order?</h3>
+
+        <p>
+            Please confirm if you have sent your order
+            through WhatsApp.
+        </p>
+
+        <button type="button" onclick="confirmOrderSent()">
+            Yes, Order Sent
+        </button>
+
+        <button
+            type="button"
+            onclick="closeOrderSentModal()"
+            style="margin-top: 10px; background: var(--cream); color: var(--dark);"
+        >
+            Not Yet
+        </button>
+
+    </div>
+
+</div>
+    <script src="js/script.js"></script>
+
+</body>
+</html>
